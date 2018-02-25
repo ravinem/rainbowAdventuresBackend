@@ -193,6 +193,7 @@ namespace Data_Layer
                     r.latitude = table.Rows[i]["latitude"].ToString(); 
                      r.description = table.Rows[i]["rainbow_description"].ToString();
                      myphotos.Add(table.Rows[i]["photourl"].ToString());
+                    r.id = Convert.ToInt32(table.Rows[i]["id"]);
                 }
                 r.photos = myphotos.ToArray();
                 connection6.Close();
