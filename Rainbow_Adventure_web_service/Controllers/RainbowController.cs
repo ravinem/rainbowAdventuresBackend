@@ -20,7 +20,7 @@ namespace Rainbow_Adventure_web_service.Controllers
     {
         [HttpPost]
         [Route("insert_rainbow")]		        
-		 public bool add_rainbow([FromBody] rainbow r)
+		 public int add_rainbow([FromBody] rainbow r)
         {
             try
             {

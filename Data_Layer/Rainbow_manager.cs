@@ -13,7 +13,7 @@ namespace Data_Layer
 {
   public class Rainbow_manager
   {
-        public bool insert_rainbow (rainbow r)
+        public int insert_rainbow (rainbow r)
         {
             using (SqlConnection connection3 = new SqlConnection())
             {
@@ -53,16 +53,11 @@ namespace Data_Layer
                 SqlParameter parameter5 = new SqlParameter("photos",table);
                 command3.Parameters.Add(parameter5);
 
-                int result = command3.ExecuteNonQuery();
+                int result = (Int32)command3.ExecuteScalar();
                 connection3.Close();
                 command3.Dispose();
 
-                if (result >= 1)
-                {
-                    return true;
-
-                }
-                return false;
+                return result;
 
             }
         
