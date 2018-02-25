@@ -78,14 +78,14 @@ namespace Rainbow_Adventure_web_service.Controllers
             
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("update_rainbow")]
-        public bool rainbow_uipdate(int rainbow_id,string rainbow_name,string description)
+        public bool rainbow_uipdate([FromBody] rainbow r)
         {
             try
             {
                 Rainbow_manager rainbow = new Rainbow_manager();
-                return rainbow.update_rainbow(rainbow_id,rainbow_name,description);
+                return rainbow.update_rainbow(r.id,r.rainbow_name,r.description);
             }
             catch (Exception ex)
             {

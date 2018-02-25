@@ -1,0 +1,8 @@
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\logging_study\logging_study\obj\Debug\logging_study.csprojResolveAssemblyReference.cache
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\logging_study\logging_study\obj\Debug\logging_study.csproj.CoreCompileInputs.cache
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\logging_study\logging_study\bin\Debug\logging_study.dll
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\logging_study\logging_study\bin\Debug\logging_study.pdb
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\logging_study\logging_study\bin\Debug\log4net.dll
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\logging_study\logging_study\bin\Debug\log4net.xml
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\logging_study\logging_study\obj\Debug\logging_study.dll
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\logging_study\logging_study\obj\Debug\logging_study.pdb

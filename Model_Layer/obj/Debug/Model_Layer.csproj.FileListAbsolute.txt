@@ -1,0 +1,6 @@
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\Model_Layer\bin\Debug\Model_Layer.dll
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\Model_Layer\bin\Debug\Model_Layer.pdb
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\Model_Layer\obj\Debug\Model_Layer.csprojResolveAssemblyReference.cache
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\Model_Layer\obj\Debug\Model_Layer.csproj.CoreCompileInputs.cache
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\Model_Layer\obj\Debug\Model_Layer.dll
+C:\Users\ravis\source\repos\Rainbow_Adventure_web_service\Model_Layer\obj\Debug\Model_Layer.pdb

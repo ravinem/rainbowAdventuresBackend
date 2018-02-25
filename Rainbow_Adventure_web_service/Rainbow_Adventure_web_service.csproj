@@ -128,7 +128,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\logging_study\logging_study\logging_study.csproj">
+    <ProjectReference Include="..\logging_study\logging_study\logging_study.csproj">
       <Project>{26d520c9-c846-4bab-88bc-d45d7e92c589}</Project>
       <Name>logging_study</Name>
     </ProjectReference>
