@@ -4,6 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
+using System.Web.Http.Filters;
+using log4net;
+using logging_study;
+using System.Web.Http.Controllers;
+using System.Diagnostics;
 
 namespace Rainbow_Adventure_web_service
 {
@@ -14,4 +19,6 @@ namespace Rainbow_Adventure_web_service
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
+
+   
 }

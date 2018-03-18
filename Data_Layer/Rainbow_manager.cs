@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 using Model_Layer;
+using Google.Apis.Auth.OAuth2;
+using Google.Cloud.Storage.V1;
 
 
 namespace Data_Layer
@@ -76,16 +78,36 @@ namespace Data_Layer
                 SqlParameter parameter = new SqlParameter("rainbow_id",id);
                 command.Parameters.Add(parameter);
 
-                int result = command.ExecuteNonQuery();
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                var credentials = GoogleCredential.FromFile(ConfigurationManager.AppSettings["googlecredential"]);
+                var client = StorageClient.Create(credentials);
+
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                   var photoUrl = table.Rows[i]["photourl"].ToString();
+                    int j = photoUrl.IndexOf("/o/");
+                    photoUrl = photoUrl.Substring(j + 3);
+                    int q = photoUrl.IndexOf('?');
+                    photoUrl = photoUrl.Substring(0, q);
+                    photoUrl = photoUrl.Replace("%2F", "/");
+                    client.DeleteObject("rainbowadventures-b65aa.appspot.com", photoUrl);
+                }
+
+
+                //int result = command.ExecuteNonQuery();
                 connection4.Close();
                 command.Dispose();
 
-                if (result >=1)
-                {
+                //if (result >=1)
+                //{
                     return true;
 
-                }
-                return false;
+                //}
+                //return false;
 
             }
 

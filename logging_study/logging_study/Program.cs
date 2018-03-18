@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 using System.Threading;
-
+using System.IO;
 
 namespace logging_study
 {
@@ -28,9 +28,14 @@ namespace logging_study
 
         public static void logerror(string error)
         {
+           
             Log.Error(error);
         }
+
+        
     }
+
+    
 }
     
 

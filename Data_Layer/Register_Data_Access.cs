@@ -15,6 +15,7 @@ namespace Data_Layer
 
        public int Register_user(string username,string email_id , string pasword)
         {
+             
             using (SqlConnection connection = new SqlConnection())
             {
                 connection.ConnectionString = ConfigurationManager.AppSettings["connectionstring"];
@@ -32,7 +33,7 @@ namespace Data_Layer
                 SqlParameter parameter2 = new SqlParameter("user_password", pasword);
                 command.Parameters.Add(parameter2);
 
-                int result = Convert.ToInt32( command.ExecuteScalar());
+                int result = Convert.ToInt32(command.ExecuteScalar());
                 connection.Close();
                 command.Dispose();
 
@@ -58,7 +59,7 @@ namespace Data_Layer
                 SqlParameter sql_parameter1 = new SqlParameter("user_password", user_password);
                 command1.Parameters.Add(sql_parameter1);
 
-                int id = Convert.ToInt32( command1.ExecuteScalar());
+                int id = Convert.ToInt32(command1.ExecuteScalar());
                 
                 return id;
 

@@ -11,7 +11,8 @@ using System.IO;
 using System.Web.Http.Filters;
 using log4net;
 using logging_study;
-
+using System.Web.Http.Controllers;
+using System.Diagnostics;
 
 namespace Rainbow_Adventure_web_service.Controllers
 {
@@ -19,18 +20,22 @@ namespace Rainbow_Adventure_web_service.Controllers
     public class RainbowController : ApiController
     {
         [HttpPost]
+        [myaction]
         [Route("insert_rainbow")]		        
 		 public int add_rainbow([FromBody] rainbow r)
         {
             try
-            {
+            { 
                 Rainbow_manager rainbow = new Rainbow_manager();
                 return rainbow.insert_rainbow(r);
             }
             catch (Exception ex)
             {
                 string m = ex.Message;
-                Program.logerror(m + "  " + "error_in_insertRainbow_method");
+                Program p = new Program();
+             
+               Program.logerror(m + "  " + "error_in_insertRainbow_method");
+
                 throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
 
@@ -46,11 +51,17 @@ namespace Rainbow_Adventure_web_service.Controllers
                 Rainbow_manager rainbow = new Rainbow_manager();
                 return rainbow.delete_rainbow(id);
             }
+            catch (Google.GoogleApiException e)
+            {
+                string a = e.Message;
+                Program.logerror(a + "  " + "google api error in_deleteRainbow_method");
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
             catch (Exception ex)
             {
                 string a = ex.Message;
                 Program.logerror(a + "  " + "error_in_deleteRainbow_method");
-                throw new HttpResponseException(HttpStatusCode.RequestTimeout);
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
 
         }
@@ -80,7 +91,7 @@ namespace Rainbow_Adventure_web_service.Controllers
 
         [HttpPost]
         [Route("update_rainbow")]
-        public bool rainbow_uipdate([FromBody] rainbow r)
+        public bool rainbow_update([FromBody] rainbow r)
         {
             try
             {
@@ -118,6 +129,20 @@ namespace Rainbow_Adventure_web_service.Controllers
                 context.Response = new HttpResponseMessage(HttpStatusCode.BadRequest);
             }
         }
-      
-    
+
+    public class myactionAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(HttpActionContext actionContext)
+        {
+            string a =  string.Format("Action Method {0} executing at {1}", actionContext.ActionDescriptor.ActionName, DateTime.Now.ToShortDateString());
+            Program.loginfo(a);
+        }
+
+        public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
+        {
+            string a = string.Format("Action Method {0} executed at {1}", actionExecutedContext.ActionContext.ActionDescriptor.ActionName, DateTime.Now.ToShortDateString());
+            Program.loginfo(a);
+            
+        }
+    }
 }
