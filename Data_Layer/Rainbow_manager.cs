@@ -64,6 +64,28 @@ namespace Data_Layer
             }
         
         }
+    
+         public int Get_id_by_username(string Username)
+        {
+            using (SqlConnection connection8 = new SqlConnection())
+            {
+                connection8.ConnectionString = ConfigurationManager.AppSettings["connectionstring"];
+                connection8.Open();
+
+                SqlCommand command = new SqlCommand("sp_get_id", connection8);
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter sqlParameter = new SqlParameter("username", Username);
+                command.Parameters.Add(sqlParameter);
+
+                int result= (Int32) command.ExecuteScalar();
+                connection8.Close();
+                connection8.Dispose();
+
+                return result;
+
+            }
+        }
 
         public bool delete_rainbow(int id)
         {
