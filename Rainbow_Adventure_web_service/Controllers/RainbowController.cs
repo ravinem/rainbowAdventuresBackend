@@ -66,7 +66,26 @@ namespace Rainbow_Adventure_web_service.Controllers
 
         }
 
-          
+            [HttpGet]
+        [Route("usernameIdByName")]
+
+        public int get_id(string name)
+        {
+            try
+            {
+                Rainbow_manager rainbow = new Rainbow_manager();
+                return rainbow.Get_id_by_username(name);
+
+            }
+            catch (Exception ex)
+            {
+                string b = ex.Message;
+                Program.logerror(b + "  " + "error_in_getallRainbow_method");
+                throw new HttpResponseException(HttpStatusCode.NotAcceptable);
+            }
+
+
+        }
         
 
        [HttpGet]
